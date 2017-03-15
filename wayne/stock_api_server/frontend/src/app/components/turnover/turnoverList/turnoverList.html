@@ -1,0 +1,41 @@
+<table st-table="$ctrl.displayedCollection" st-safe-src="$ctrl.turnovers" class="table is-striped turnover-table">
+  <thead>
+    <tr>
+      <th st-sort="stock_code" class="sort-column text-center">代號</th>
+      <th st-sort="stock_name" class="sort-column text-center">名稱</th>
+      <th st-sort="stock_opening_price" class="sort-column">開盤價</th>
+      <th st-sort="stock_highest_price" class="sort-column">最高價</th>
+      <th st-sort="stock_lowest_price" class="sort-column">最低價</th>
+      <th st-sort="stock_closing_yesterday" class="sort-column">昨收盤</th>
+      <th st-sort="stock_closing_today" class="sort-column">今收盤</th>
+      <th st-sort="stock_volume" st-sort-default="reverse" class="sort-column">成交量</th>
+      <th st-sort="stock_change" class="sort-column">漲跌</th>
+      <th st-sort="stock_quote_change" class="sort-column">漲跌幅</th>
+      <th class="text-center">資料時間</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="t in $ctrl.displayedCollection">
+      <td class="has-text-centered"><b>{{t.stock_code}}</b></td>
+      <td class="has-text-centered">
+        <a href="{{t.stock_company_uri}}">{{t.stock_name}}</a></strong>
+      </td>
+      <td>{{t.stock_opening_price}}</td>
+      <td>{{t.stock_highest_price}}</td>
+      <td>{{t.stock_lowest_price}}</td>
+      <td>{{t.stock_closing_yesterday}}</td>
+      <td>{{t.stock_closing_today}}</td>
+      <td>{{t.stock_volume}}</td>
+      <td>{{t.stock_change}}</td>
+      <td>{{t.stock_quote_change}}</td>
+      <td class="has-text-centered">{{t.created_at}}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="11">
+        <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="10"></div>
+      </td>
+    </tr>
+  </tfoot>
+</table>

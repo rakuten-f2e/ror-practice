@@ -1,0 +1,26 @@
+language: ruby
+
+cache: bundler
+
+rvm:
+  - 2.1.5
+
+services:
+  - postgresql
+
+branches:
+  only:
+    - dev/wayne
+
+before_install:
+  - cd ./wayne/stock_api_server/
+
+before_script:
+  - psql -c 'create database stock_api_server_test;' -U postgres    
+  # change the db connection
+  - cp config/database.travis.yml config/database.yml
+  - cat config/database.yml
+  - bundle exec rake db:migrate RAILS_ENV=test
+
+script:
+  - bundle exec rspec spec
