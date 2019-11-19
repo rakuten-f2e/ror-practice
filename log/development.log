@@ -1,0 +1,45 @@
+
+
+Started GET "/assets/rails.png" for 127.0.0.1 at 2019-11-19 09:54:01 +0800
+Connecting to database specified by database.yml
+
+ActiveRecord::ConnectionNotEstablished (ActiveRecord::ConnectionNotEstablished):
+  activerecord (3.2.22.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:410:in `retrieve_connection'
+  activerecord (3.2.22.1) lib/active_record/connection_adapters/abstract/connection_specification.rb:171:in `retrieve_connection'
+  activerecord (3.2.22.1) lib/active_record/connection_adapters/abstract/connection_specification.rb:145:in `connection'
+  activerecord (3.2.22.1) lib/active_record/query_cache.rb:67:in `rescue in call'
+  activerecord (3.2.22.1) lib/active_record/query_cache.rb:60:in `call'
+  activerecord (3.2.22.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:479:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+  activesupport (3.2.22.1) lib/active_support/callbacks.rb:405:in `_run__2439067908347176280__call__1846745548370641565__callbacks'
+  activesupport (3.2.22.1) lib/active_support/callbacks.rb:405:in `__run_callback'
+  activesupport (3.2.22.1) lib/active_support/callbacks.rb:385:in `_run_call_callbacks'
+  activesupport (3.2.22.1) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/reloader.rb:65:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/remote_ip.rb:31:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/debug_exceptions.rb:16:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.22.1) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.22.1) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.22.1) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.22.1) lib/rails/rack/logger.rb:16:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.7) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.7) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.22.1) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.7) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.22.1) lib/action_dispatch/middleware/static.rb:83:in `call'
+  railties (3.2.22.1) lib/rails/engine.rb:484:in `call'
+  railties (3.2.22.1) lib/rails/application.rb:231:in `call'
+  rack (1.4.7) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.22.1) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.7) lib/rack/handler/webrick.rb:59:in `service'
+  /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/2.3.0/webrick/server.rb:314:in `block in start_thread'
+
+
+  Rendered /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/gems/2.3.0/gems/actionpack-3.2.22.1/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.6ms)
+  Rendered /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/gems/2.3.0/gems/actionpack-3.2.22.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (2.6ms)
+  Rendered /Users/hsinshan.hsieh/.rbenv/versions/2.3.7/lib/ruby/gems/2.3.0/gems/actionpack-3.2.22.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (51.9ms)
