@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+# fake data
+Stock.create(id: 3367, name: "aa", opening_price:"398", highest_price: "500", floor_price: "300", yesterday_closing_price: "411", today_closing_price:"400", volumes: 100)
+Stock.create(id: 3368, name: "bb", opening_price:"498", highest_price: "600", floor_price: "400", yesterday_closing_price: "455", today_closing_price:"600", volumes: 700)
+Stock.create(id: 3300, name: "cc", opening_price:"388", highest_price: "510", floor_price: "350", yesterday_closing_price: "471", today_closing_price:"390", volumes: 170)
+Stock.create(id: 3333, name: "ddd", opening_price:"408", highest_price: "800", floor_price: "460", yesterday_closing_price: "405", today_closing_price:"590", volumes: 780)

@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: MyString
+  opening_price: MyString
+  highest_price: MyString
+  floor_price: MyString
+  yesterday_closing_price: MyString
+  today_closing_price: MyString
+  volumes: 1
+
+two:
+  id: 1
+  name: MyString
+  opening_price: MyString
+  highest_price: MyString
+  floor_price: MyString
+  yesterday_closing_price: MyString
+  today_closing_price: MyString
+  volumes: 1
