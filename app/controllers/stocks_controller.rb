@@ -1,5 +1,6 @@
 class StocksController < ApplicationController
-  def index
+	def index
+		Stock.crawl_stocks
 		@stocks = Stock.get_all_stocks
 		render json: @stocks
 	end
