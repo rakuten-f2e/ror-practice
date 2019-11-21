@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20191119023732) do
 
   create_table "stocks", :force => true do |t|
     t.integer  "number"
+    t.integer  "stock_id"
     t.string   "name"
     t.string   "opening_price"
     t.string   "highest_price"

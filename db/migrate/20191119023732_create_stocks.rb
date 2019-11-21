@@ -2,7 +2,7 @@ class CreateStocks < ActiveRecord::Migration
   def change
     create_table :stocks do |t|
       t.integer :number
-      t.integer :id
+      t.integer :stock_id
       t.string :name
       t.string :opening_price
       t.string :highest_price
@@ -12,7 +12,7 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :volumes
       t.string :flunctuation
       t.string :flunctuation_rate
-
+      
       t.timestamps
     end
   end

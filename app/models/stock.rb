@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class Stock < ActiveRecord::Base
-  attr_accessible :number, :floor_price, :highest_price, :id, :name, :opening_price, :today_closing_price, :volumes, :yesterday_closing_price, :flunctuation, :flunctuation_rate
+  attr_accessible :number, :floor_price, :highest_price, :stock_id, :name, :opening_price, :today_closing_price, :volumes, :yesterday_closing_price, :flunctuation, :flunctuation_rate
 
   
   def self.crawl_stocks
@@ -12,20 +12,24 @@ class Stock < ActiveRecord::Base
     .encode!('utf-8', undef: :replace, replace: '?', invalid: :replace) # encode chinese of crawl_data
 
     parse_data = Nokogiri::HTML(encoded_data)
-    stocks_raw_data = parse_data.css('.stockalllistbg2, stockalllistbg1')
+    stocks_raw_data = parse_data.xpath('//tr[contains(@class, "stockalllistbg2") or contains(@class, "stockalllistbg1")]')
 
     stocks_raw_data.each do |stock|
       stocks_data.push(array_to_hash(stock.text.gsub(/\u00a0/, '').split(' ')))
     end
 
-    Stock.delete_all
-    Stock.create(stocks_data)
+    data_to_db(stocks_data)
+  end
+
+  def self.data_to_db(data)
+    Stock.where(:create_time.to_s.include? Time.now.strftime('%Y-%m-%d')).delete_all
+    Stock.create(data)
   end
 
   def self.array_to_hash(arr)
     hash_data = {
       number: arr[0], 
-      id: arr[1], 
+      stock_id: arr[1], 
       name: arr[2], 
       opening_price: arr[3],
       highest_price: arr[4],
@@ -48,6 +52,6 @@ class Stock < ActiveRecord::Base
   end
 
   def self.get_stock_by_id(sid)
-    Stock.where(:id => sid)
+    Stock.where(:stock_id => sid)
   end
 end
