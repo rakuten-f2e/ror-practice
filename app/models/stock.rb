@@ -46,4 +46,8 @@ class Stock < ActiveRecord::Base
   def self.sort_stocks(col)
     Stock.order(col.to_sym)
   end
+
+  def self.get_stock_by_id(sid)
+    Stock.where(:id => sid)
+  end
 end
