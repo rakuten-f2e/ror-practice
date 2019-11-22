@@ -1,8 +1,8 @@
 class StocksController < ApplicationController
 	def index
-		Stock.crawl_stocks
-		if params[:id] 
-			@stocks = Stock.get_stock_by_id(params[:id])
+		# Stock.crawl_stocks
+		if params[:id] || params[:date]
+			@stocks = Stock.search_stocks(params[:id], params[:date])
 		else
 			@stocks = Stock.get_all_stocks
 		end

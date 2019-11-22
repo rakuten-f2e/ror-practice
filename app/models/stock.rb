@@ -51,7 +51,13 @@ class Stock < ActiveRecord::Base
     Stock.order(col.to_sym)
   end
 
-  def self.get_stock_by_id(sid)
-    Stock.where(:stock_id => sid)
+  def self.search_stocks(sid, date)
+    if not sid
+      Stock.where(:create_at.to_s.include? date)
+    elsif not date
+      Stock.where(:stock_id => sid)
+    else
+      Stock.where(:stock_id => sid).where(:create_at.to_s.include? date)
+    end
   end
 end
