@@ -42,4 +42,8 @@ gem 'pry-rails'
 # crawl data
 gem "nokogiri"
 
+# schedule cron data
+gem 'whenever'
 
+# solve CORS problem
+gem 'rack-cors', require: 'rack/cors'
