@@ -22,7 +22,7 @@ class Stock < ActiveRecord::Base
   end
 
   def self.data_to_db(data)
-    Stock.where(:create_time.to_s.include? Time.now.strftime('%Y-%m-%d')).delete_all
+    Stock.where(:create_at.to_s.include? Time.now.strftime('%Y-%m-%d')).destroy_all
     Stock.create(data)
   end
 

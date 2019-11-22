@@ -1,7 +1,11 @@
 class StocksController < ApplicationController
 	def index
 		Stock.crawl_stocks
-		@stocks = Stock.get_all_stocks
+		if params[:id] 
+			@stocks = Stock.get_stock_by_id(params[:id])
+		else
+			@stocks = Stock.get_all_stocks
+		end
 		render json: @stocks
 	end
 
@@ -10,8 +14,4 @@ class StocksController < ApplicationController
 		render json: @sorted_stocks 
 	end
 
-	def stock
-		@stock = Stock.get_stock_by_id(params[:id])
-		render json: @stock
-	end
 end
