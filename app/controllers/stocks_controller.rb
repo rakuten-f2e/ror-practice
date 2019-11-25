@@ -19,4 +19,9 @@ class StocksController < ApplicationController
 		render json: date_options
 	end
 
+	def stock
+		sid_options = Stock.get_sid_options
+		render json: sid_options
+	end
+
 end

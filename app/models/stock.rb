@@ -64,6 +64,10 @@ class Stock < ActiveRecord::Base
   end
 
   def self.get_date_options
-    Stock.pluck('DATE(created_at)').uniq
+    Stock.order('created_at desc').pluck('DATE(created_at)').uniq
+  end
+
+  def self.get_sid_options
+    Stock.select('stock_id, name').order('stock_id').uniq('stock_id')
   end
 end

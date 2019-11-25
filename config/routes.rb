@@ -3,6 +3,7 @@ RorPractice::Application.routes.draw do
     collection do
       get :sort
       get :date
+      get :stock
     end
   end
 
