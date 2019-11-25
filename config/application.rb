@@ -58,5 +58,13 @@ module RorPractice
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # solve CORS problem
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins /\Ahttp:\/\/localhost:\d+\z/
+        resource '*', headers: :any, methods: :any
+      end
+    end
   end
 end
