@@ -2,16 +2,21 @@ class StocksController < ApplicationController
 	def index
 		# Stock.crawl_stocks
 		if params[:id] || params[:date]
-			@stocks = Stock.search_stocks(params[:id], params[:date])
+			stocks = Stock.search_stocks(params[:id], params[:date])
 		else
-			@stocks = Stock.get_all_stocks
+			stocks = Stock.get_today_stocks
 		end
-		render json: @stocks
+		render json: stocks
 	end
 
 	def sort
-		@sorted_stocks = Stock.sort_stocks(params[:col])
-		render json: @sorted_stocks 
+		sorted_stocks = Stock.sort_stocks(params[:col])
+		render json: sorted_stocks 
+	end
+
+	def date
+		date_options = Stock.get_date_options
+		render json: date_options
 	end
 
 end

@@ -44,8 +44,9 @@ class Stock < ActiveRecord::Base
     hash_data.stringify_keys 
   end
   
-  def self.get_all_stocks
-    Stock.all
+  def self.get_today_stocks
+    date = Time.now.to_date
+    Stock.where(created_at: date.to_date.midnight..date.to_date.end_of_day)
   end
 
   def self.sort_stocks(col)
@@ -60,5 +61,9 @@ class Stock < ActiveRecord::Base
     else
       Stock.where(stock_id: sid, created_at: date.to_date.midnight..date.to_date.end_of_day)
     end
+  end
+
+  def self.get_date_options
+    Stock.pluck('DATE(created_at)').uniq
   end
 end
