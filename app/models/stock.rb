@@ -22,7 +22,8 @@ class Stock < ActiveRecord::Base
   end
 
   def self.data_to_db(data)
-    Stock.where(:create_at.to_s.include? Time.now.strftime('%Y-%m-%d')).destroy_all
+    date = Time.now.to_date
+    Stock.where(created_at:date.midnight..date.end_of_day).destroy_all
     Stock.create(data)
   end
 
@@ -53,11 +54,11 @@ class Stock < ActiveRecord::Base
 
   def self.search_stocks(sid, date)
     if not sid
-      Stock.where(:create_at.to_s.include? date)
+      Stock.where(created_at: date.to_date.midnight..date.to_date.end_of_day)
     elsif not date
-      Stock.where(:stock_id => sid)
+      Stock.where(stock_id: sid)
     else
-      Stock.where(:stock_id => sid).where(:create_at.to_s.include? date)
+      Stock.where(stock_id: sid, created_at: date.to_date.midnight..date.to_date.end_of_day)
     end
   end
 end
