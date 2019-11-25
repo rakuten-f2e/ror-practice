@@ -1,0 +1,22 @@
+.selectionArea {
+	width: 900px;
+	margin: 50px auto 30px;
+}
+select:not(:first-child){
+	margin-left: 30px;
+}
+table {
+	border-collapse: collapse;
+	width: 900px;
+	margin: auto;
+	color: #413f3f;
+	border-radius: 5px;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid #d3d2d2;
+	
+}
+
+
