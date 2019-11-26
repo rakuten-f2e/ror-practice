@@ -1,8 +1,6 @@
 import React from 'react';
 import Api from '../api';
 import './stockBoard.css';
-
-
 export default class StockBoard extends React.Component {
 	constructor(props){
 		super(props)
@@ -52,15 +50,15 @@ export default class StockBoard extends React.Component {
 				<div className="selectionArea">
 					請選擇日期：
 					<select onChange={this.changeDate}>
-						<option value= " "> -- ALL --</option>
+						<option value= "all"> -- ALL --</option>
 						{dateSelections}
 					</select>
 					請選擇股票：
 					<select onChange={this.changeSid} >
-						<option value= " " > -- ALL --</option>
+						<option value= "all" > -- ALL --</option>
 						{sidSelections}
 					</select>
-					</div>
+				</div>
 				<table>
 					<thead>
 						<tr>
@@ -82,8 +80,8 @@ export default class StockBoard extends React.Component {
 	}
 	componentDidUpdate(prevProps, prevState){
 		if(this.state.selectedDate !== prevState.selectedDate || this.state.selectedSid !== prevState.selectedSid){
-			const stockId = this.state.selectedSid === ' ' ? null : this.state.selectedSid
-			const date = this.state.selectedDate === ' ' ? null : this.state.selectedDate
+			const stockId = this.state.selectedSid === 'all' ? null : this.state.selectedSid
+			const date = this.state.selectedDate === 'all' ? null : this.state.selectedDate
 			
 			this.searchStocks(stockId, date)
 		}
