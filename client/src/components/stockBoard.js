@@ -50,12 +50,14 @@ export default class StockBoard extends React.Component {
 		return(
 			<div>
 				<div className="selectionArea">
+					請選擇日期：
 					<select onChange={this.changeDate}>
-						<option value= " "> -- 請選擇日期 --</option>
+						<option value= " "> -- ALL --</option>
 						{dateSelections}
 					</select>
+					請選擇股票：
 					<select onChange={this.changeSid} >
-						<option value= " " > -- 請選擇股票 --</option>
+						<option value= " " > -- ALL --</option>
 						{sidSelections}
 					</select>
 					</div>

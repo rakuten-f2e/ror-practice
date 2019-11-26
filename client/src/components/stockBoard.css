@@ -3,8 +3,8 @@
 	margin: 50px auto 30px;
 }
 
-select:not(:first-child){
-	margin-left: 30px;
+select:first-child{
+	margin-right: 30px;
 }
 
 table {
@@ -26,11 +26,11 @@ table, th, td {
 }
 
 .positive {
-	color: #009900;
+	color: #ec008c;
 }
 
 .negative {
-	color: #ec008c;
+	color: #009900;
 }
 
 .volumes {
