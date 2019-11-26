@@ -10,8 +10,8 @@ class CreateStocks < ActiveRecord::Migration
       t.string :yesterday_closing_price
       t.string :today_closing_price
       t.integer :volumes
-      t.string :flunctuation
-      t.string :flunctuation_rate
+      t.string :fluctuation
+      t.string :fluctuation_rate
       
       t.timestamps
     end

@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 
 class Stock < ActiveRecord::Base
-  attr_accessible :number, :floor_price, :highest_price, :stock_id, :name, :opening_price, :today_closing_price, :volumes, :yesterday_closing_price, :flunctuation, :flunctuation_rate
+  attr_accessible :number, :floor_price, :highest_price, :stock_id, :name, :opening_price, :today_closing_price, :volumes, :yesterday_closing_price, :fluctuation, :fluctuation_rate
 
   
   def self.crawl_stocks
@@ -38,8 +38,8 @@ class Stock < ActiveRecord::Base
       yesterday_closing_price: arr[6],
       today_closing_price: arr[7],
       volumes: arr[8],
-      flunctuation: arr[9] + arr[10],
-      flunctuation_rate: arr[11]
+      fluctuation: arr[9] + ' ' +arr[10],
+      fluctuation_rate: arr[11]
     }
     hash_data.stringify_keys 
   end
