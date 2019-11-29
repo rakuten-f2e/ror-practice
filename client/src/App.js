@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import StockBoard from './components/stockBoard'
 
 function App() {

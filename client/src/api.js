@@ -4,4 +4,7 @@ const api = axios.create({
     baseURL: 'http://localhost:3000/'
 })
 
-export default api
+export const getTodayStocks = () => api.get('/stocks');
+export const getDateOptions = () => api.get('/stocks/date');
+export const getSidOptions = () => api.get('/stocks/stock');
+export const getStock = (sid, date) => api.get('/stocks', { params: {id: sid, date: date} });
