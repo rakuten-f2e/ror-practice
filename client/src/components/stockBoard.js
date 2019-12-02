@@ -18,10 +18,10 @@ export default class StockBoard extends React.Component {
 	}
 
 	componentDidUpdate(prevProps, prevState){
-		const { selectedDate, selectedSid} = this.state
+		const { selectedDate, selectedStock} = this.state
 
-		if(selectedDate !== prevState.selectedDate || selectedSid !== prevState.selectedSid){
-			const stockId = selectedSid === 'all' ? null : selectedSid
+		if(selectedDate !== prevState.selectedDate || selectedStock !== prevState.selectedStock){
+			const stockId = selectedStock === 'all' ? null : selectedStock
 			const date = selectedDate === 'all' ? null : selectedDate
 			
 			this.searchStocks(stockId, date)
@@ -69,7 +69,7 @@ export default class StockBoard extends React.Component {
 	}
 
 	changeSid = (e) => {
-		this.setState({selectedSid: e.target.value})
+		this.setState({selectedStock: e.target.value})
 	}
 
 	onSort = (i) => {
