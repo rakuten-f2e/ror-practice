@@ -1,5 +1,5 @@
 import React from 'react';
-import StockBoard from './components/stockBoard'
+import StockBoard from './components/stockBoard/'
 
 function App() {
   return (

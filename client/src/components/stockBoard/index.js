@@ -1,8 +1,23 @@
 import React from 'react';
-import { getTodayStocks, getDateOptions, getSidOptions, getStock } from '../api';
-import Stock from './_stock'
-import TableHeader from './_tableHeader'
-import DropdownSelect from './_dropdownSelect'
+import { getTodayStocks, getDateOptions, getSidOptions, getStockByIdOrDate } from '../../api';
+import StockTable from './stockTable/'
+import TableHeader from './tableHeader/'
+import DropdownSelect from './dropdownSelect/'
+
+const HEADING = [
+	'created_at', 
+	'number', 
+	'stock_id', 
+	'name', 
+	'opening_price', 
+	'highest_price', 
+	'floor_price', 
+	'yesterday_closing_price', 
+	'today_closing_price', 
+	'volumes', 
+	'fluctuation', 
+	'fluctuation_rate'
+]
 
 export default class StockBoard extends React.Component {
 	state = {
@@ -24,7 +39,13 @@ export default class StockBoard extends React.Component {
 			const stockId = selectedStock === 'all' ? null : selectedStock
 			const date = selectedDate === 'all' ? null : selectedDate
 			
-			this.searchStocks(stockId, date)
+			getStockByIdOrDate(stockId, date)
+			.then(res => {
+				this.setState({ stocksData : JSON.parse(JSON.stringify(res.data)) })
+			})
+			.catch(err => {
+				console.log(err)
+			})
 		}
 	}
 
@@ -54,16 +75,6 @@ export default class StockBoard extends React.Component {
 			})
 	}
 
-	searchStocks(sid, date) {
-		getStock(sid, date)
-			.then(res => {
-				this.setState({ stocksData : JSON.parse(JSON.stringify(res.data)) })
-			})
-			.catch(err => {
-				console.log(err)
-			})
-	}
-
 	changeDate = (e) => {
 		this.setState({selectedDate: e.target.value})
 	}
@@ -74,44 +85,32 @@ export default class StockBoard extends React.Component {
 
 	onSort = (i) => {
 		const { stocksData } = this.state
-		const keys = ['created_at','number', 'stock_id', 'name', 'opening_price', 'highest_price', 'floor_price', 'yesterday_closing_price', 'today_closing_price', 'volumes', 'fluctuation', 'fluctuation_rate']
-		
+		const condition = HEADING[i]
+
 		stocksData.sort((a,b) => {
-			switch(i) {
-				case 0:
-					return new Date(a[keys[i]]) >= new Date(b[keys[i]]) 
-				case 3:
-					return a[keys[i]].localeCompare(b[keys[i]]) 
-				case 10:
-					return Number(a[keys[i]].split(' ')[1]) >=  Number(b[keys[i]].split(' ')[1]) ? 1 : -1
-				case 11:
-					return Number(a[keys[i]].split('%')[0]) <=  Number(b[keys[i]].split('%')[0]) ? 1 : -1
-				default:
-					return Number(a[keys[i]]) <=  Number(b[keys[i]]) ? 1 : -1
-			}
-			
+			if ( i === 3) return a[condition].localeCompare(b[condition])
+			return a[condition] <=  b[condition] ? 1 : -1
 		}) 
 		this.setState({stocksData: stocksData})
 	}
 
-	render(){
+	render() {
 		const { stocksData, dateOptions, sidOptions } = this.state
 
 		return(
 			<div>
 				<div className="selectionArea">
 					請選擇日期：
-					<DropdownSelect options = {dateOptions} onChange = {this.changeDate} />
+					<DropdownSelect options={dateOptions} onChange={this.changeDate} />
 					請選擇股票：
-					<DropdownSelect options = {sidOptions} onChange = {this.changeSid} optionKey = "stock_id"/>
+					<DropdownSelect options={sidOptions} onChange={this.changeSid} />
 				</div>
 				<table>
-					<TableHeader onClick = { this.onSort } />
-					<Stock stocksData = {stocksData} />
+					<TableHeader onClick={this.onSort} />
+					<StockTable stocksData={stocksData} />
 				</table>
 			</div>
 		)
-
 	}
 }
 

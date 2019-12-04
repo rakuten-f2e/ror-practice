@@ -7,4 +7,4 @@ const api = axios.create({
 export const getTodayStocks = () => api.get('/stocks');
 export const getDateOptions = () => api.get('/stocks/date');
 export const getSidOptions = () => api.get('/stocks/stock');
-export const getStock = (sid, date) => api.get('/stocks', { params: {id: sid, date: date} });
+export const getStockByIdOrDate = (sid, date) => api.get('/stocks', { params: {id: sid, date: date} });
