@@ -9,11 +9,6 @@ class StocksController < ApplicationController
 		render json: stocks
 	end
 
-	def sort
-		sorted_stocks = Stock.sort_stocks(params[:col])
-		render json: sorted_stocks 
-	end
-
 	def date
 		date_options = Stock.get_date_options
 		render json: date_options

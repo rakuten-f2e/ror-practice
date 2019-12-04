@@ -38,8 +38,8 @@ class Stock < ActiveRecord::Base
       yesterday_closing_price: arr[6],
       today_closing_price: arr[7],
       volumes: arr[8],
-      fluctuation: arr[9] + ' ' +arr[10],
-      fluctuation_rate: arr[11]
+      fluctuation: (arr[9] === '▼' ? '-' : '') + arr[10],
+      fluctuation_rate: (arr[11].delete '%')
     }
     hash_data.stringify_keys 
   end
@@ -47,10 +47,6 @@ class Stock < ActiveRecord::Base
   def self.get_today_stocks
     date = Time.now.to_date
     Stock.where(created_at: date.to_date.midnight..date.to_date.end_of_day)
-  end
-
-  def self.sort_stocks(col)
-    Stock.order(col.to_sym)
   end
 
   def self.search_stocks(sid, date)
@@ -64,10 +60,29 @@ class Stock < ActiveRecord::Base
   end
 
   def self.get_date_options
-    Stock.order('created_at desc').pluck('DATE(created_at)').uniq
+    date_options = []
+    dates = Stock.order('created_at desc').pluck('DATE(created_at)').uniq
+    dates.each do |date|
+      date_options.push(format_options(date, date))
+    end
+    date_options
   end
 
   def self.get_sid_options
-    Stock.select('stock_id, name').order('stock_id').uniq('stock_id')
+    stock_options = []
+    stocks = Stock.select('stock_id, name').order('stock_id').uniq('stock_id')
+    stocks.each do |stock|
+      stock_text = stock.stock_id.to_s + ' ' + stock.name
+      stock_options.push(format_options(stock_text, stock.stock_id))
+    end
+    stock_options
+  end
+
+  def self.format_options(text, value)
+    option = {
+      text: text,
+      value: value
+    }
+    option.stringify_keys
   end
 end

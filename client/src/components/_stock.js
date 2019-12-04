@@ -2,17 +2,22 @@ import React from 'react';
 
 export default class Stock extends React.Component {
 	getFlutcuationClass = (data) => {
-		const prefix = data[0]
-		if (prefix === '▲') return 'positive'
-		if (prefix === '▼') return 'negative'
+		if ( data < 0 ) return 'negative'
+		if ( data > 0 ) return 'positive'
+	}
+
+	getFluctuationText = (text) => {
+		if ( text < 0 ) return '▼ ' + text
+		if ( text > 0 ) return '▲ ' + text
+		return '-- ' + text
 	}
 
 	render(){
 		const { stocksData } = this.props
 
-		const stocks = stocksData.map( stock => {
+		const stocks = stocksData.map(stock => {
 			return (
-				<tr key = {stock.id}>
+				<tr key={stock.id}>
 					<td>{stock.created_at.split('T')[0]}</td>
 					<td>{stock.number}</td>
 					<td>{stock.stock_id}</td>
@@ -23,8 +28,8 @@ export default class Stock extends React.Component {
 					<td>{stock.yesterday_closing_price}</td>
 					<td>{stock.today_closing_price}</td>
 					<td className="volumes">{stock.volumes}</td>
-					<td className={this.getFlutcuationClass(stock.fluctuation)}>{stock.fluctuation}</td>
-					<td>{stock.fluctuation_rate}</td>
+					<td className={this.getFlutcuationClass(stock.fluctuation)}>{this.getFluctuationText(stock.fluctuation)}</td>
+					<td>{stock.fluctuation_rate + ' %'}</td>
 				</tr>
 			)
 		})

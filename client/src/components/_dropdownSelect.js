@@ -1,26 +1,20 @@
 import React from 'react';
 
-export default function DropdownSelect(props) {
-	const { options, optionKey } = props
-
-	const dropdown = options.map( option => {
-		if (typeof option === 'string') {
-			return (
-				<option value = {option} key = {option}>{option}</option>
-			)
-		}
+export default function DropdownSelect({ options, onChange }) { 
+	const dropdown = options.map(option => {
 		return (
-			<option value = {option[optionKey]} key = {option[optionKey]}>
-				{Object.values(option).join(' ')}
+			<option value={option.value} key={option.value}>
+				{option.text}
 			</option>
 		)
 	})
 	
 	return(
-		<select onChange={props.onChange} >
-			<option value= "all" > -- ALL --</option>
+		<select onChange={onChange} >
+			<option value="all" > -- ALL --</option>
 			{dropdown}
 		</select>
 	)
 }
+
 

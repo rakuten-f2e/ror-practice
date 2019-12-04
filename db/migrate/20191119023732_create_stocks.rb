@@ -4,14 +4,14 @@ class CreateStocks < ActiveRecord::Migration
       t.integer :number
       t.integer :stock_id
       t.string :name
-      t.string :opening_price
-      t.string :highest_price
-      t.string :floor_price
-      t.string :yesterday_closing_price
-      t.string :today_closing_price
+      t.float :opening_price
+      t.float :highest_price
+      t.float :floor_price
+      t.float :yesterday_closing_price
+      t.float :today_closing_price
       t.integer :volumes
-      t.string :fluctuation
-      t.string :fluctuation_rate
+      t.float :fluctuation
+      t.float :fluctuation_rate
       
       t.timestamps
     end
