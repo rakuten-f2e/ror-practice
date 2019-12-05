@@ -19,7 +19,7 @@ const HEADING = [
 	'fluctuation_rate'
 ]
 
-export default class StockBoard extends React.Component {
+class StockBoard extends React.Component {
 	state = {
 		stocksData : [],
 		dateOptions: [],
@@ -114,3 +114,4 @@ export default class StockBoard extends React.Component {
 	}
 }
 
+export default StockBoard
