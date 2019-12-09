@@ -20,4 +20,3 @@ DropdownSelect.propTypes = {
 }
 
 export default DropdownSelect
-

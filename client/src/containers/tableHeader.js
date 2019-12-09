@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import Header from '../components/stockBoard/header'
 import { sortStocksData } from '../actions/stocksData'
+import Header from '../components/stockBoard/header'
 
 const mapStateToProps = state => ({
   options: state.stockOption

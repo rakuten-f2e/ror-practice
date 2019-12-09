@@ -1,4 +1,4 @@
-export const dateOption = (state = [], action) => {
+const dateOption = (state = [], action) => {
   switch (action.type) {
     case 'GET_DATE_OPTION': {
       return action.data   
@@ -7,3 +7,5 @@ export const dateOption = (state = [], action) => {
       return state;
   }
 }
+
+export default dateOption

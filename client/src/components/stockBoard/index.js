@@ -16,7 +16,6 @@ class StockBoard extends React.Component {
 		getStockOption()
 	}
 
-
 	render() {
 		return(
 			<div>

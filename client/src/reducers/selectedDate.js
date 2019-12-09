@@ -1,4 +1,4 @@
-export const selectedDate = (state = '', action) => {
+const selectedDate = (state = '', action) => {
   switch (action.type) {
     case 'CHANGE_DATE': {
       return action.selectedDate
@@ -7,3 +7,5 @@ export const selectedDate = (state = '', action) => {
       return state;
   }
 }
+
+export default selectedDate

@@ -7,7 +7,7 @@ export const GET_SEARCH_STOCK_DATA = 'GET_SEARCH_STOCK_DATA'
 export function getStocksData(data) {
   return {
     type: GET_STOCK_DATA,
-    stocksData: data
+    data
   }
 }
 

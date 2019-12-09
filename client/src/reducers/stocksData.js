@@ -13,18 +13,16 @@ const HEADING = [
 	'fluctuation_rate'
 ]
 
-export const stocksData = (state = [], action) => {
+const stocksData = (state = [], action) => {
   switch (action.type) {
     case 'GET_STOCK_DATA': {
-      return action.stocksData  
+      return action.data  
     }
     case 'SORT_STOCK_DATA': {
       const stocksData = [...state]
-      const index = action.clickedIndex
-      const condition = HEADING[index]
+      const condition = HEADING[action.clickedIndex]
     
       return stocksData.sort((a,b) => {
-        if ( index === 3) return a[condition].localeCompare(b[condition])
         return a[condition] <=  b[condition] ? 1 : -1
       })  
     }
@@ -35,3 +33,5 @@ export const stocksData = (state = [], action) => {
       return state;
   }
 }
+
+export default stocksData

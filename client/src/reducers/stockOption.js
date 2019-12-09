@@ -1,4 +1,4 @@
-export const stockOption = (state = [], action) => {
+const stockOption = (state = [], action) => {
   switch (action.type) {
     case 'GET_STOCK_OPTION': {
       return action.stockOption   
@@ -7,3 +7,5 @@ export const stockOption = (state = [], action) => {
       return state;
   }
 }
+
+export default stockOption
