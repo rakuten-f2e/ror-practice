@@ -8,7 +8,7 @@ const TableHeader = ({ onClick }) => (
 		<tr>
 			{
 				HEADERS.map((header, i) => (
-					<td className="tableHeader" key={header} onClick={() => {onClick(i)}}>{header}</td>
+					<td className="tableHeader" key={header} onClick={() => onClick(i)}>{header}</td>
 				))
 			}
 		</tr>
@@ -20,4 +20,3 @@ TableHeader.propTypes = {
 }
 
 export default TableHeader
-

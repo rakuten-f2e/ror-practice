@@ -1,7 +1,14 @@
 import { combineReducers } from 'redux'
-import { reducer } from './test'
+import { selectedDate } from './selectedDate'
+import { selectedStock } from './selectedStock'
+import { dateOption } from './dateOption'
+import { stockOption } from './stockOption'
+import { stocksData } from './stocksData'
 
 export default combineReducers({
-  reducer,
-  selectedDate
+  selectedDate,
+  dateOption,
+  stockOption,
+  selectedStock,
+  stocksData
 })

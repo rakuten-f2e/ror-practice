@@ -1,14 +1,15 @@
 import { connect } from 'react-redux'
-import { changeTest } from '../actions'
 import StockBoard from '../components/stockBoard'
-// import * as obj from './action'
+import { getDateOptionApi } from '../actions/dateOption'
+import { getStockOptionApi } from '../actions/stockOption'
+import { getStocksDataApi } from '../actions/stocksData'
 
-const mapStateToProps = state => ({
-  test: state.test
-})
+const mapStateToProps = {}
 
 const mapDispatchToProps = dispatch => ({
-  changeTest: test => dispatch(changeTest(test))
+  getDateOption: () => dispatch(getDateOptionApi()),
+  getStockOption: () => dispatch(getStockOptionApi()),
+  getStocksData: () => dispatch(getStocksDataApi()),
 })
 
 const StockBoardContainer = connect(

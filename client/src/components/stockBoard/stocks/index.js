@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-const StockTable = ({ stocksData }) => {
+const Stocks = ({ stocksData }) => {
 	const getFlutcuationClass = (data) => {
 		if ( data < 0 ) return 'negative'
 		if ( data > 0 ) return 'positive'
@@ -39,8 +39,8 @@ const StockTable = ({ stocksData }) => {
 	)
 }
 
-StockTable.propTypes = {
+Stocks.propTypes = {
 	stocksData: PropTypes.array.isRequired
 }
 
-export default StockTable
+export default Stocks
