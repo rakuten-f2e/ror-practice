@@ -10,9 +10,7 @@ const mapDispatchToProps = dispatch => ({
   onChange: e => dispatch(changeStock(e))
 })
 
-const StockSelection = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(DropdownSelect)
-
-export default StockSelection

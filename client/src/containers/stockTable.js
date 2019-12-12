@@ -1,12 +1,10 @@
 import { connect } from 'react-redux'
-import Stocks from '../components/stockBoard/stocks'
+import StockTable from '../components/stockBoard/stockTable'
 
 const mapStateToProps = state => ({
   stocksData: state.stocksData
 })
 
-const StockTable = connect(
+export default connect(
   mapStateToProps
-)(Stocks)
-
-export default StockTable
+)(StockTable)

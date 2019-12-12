@@ -10,9 +10,7 @@ const mapDispatchToProps = dispatch => ({
   onChange: e => dispatch(changeDate(e))
 })
 
-const DateSelection = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(DropdownSelect)
-
-export default DateSelection

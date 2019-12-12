@@ -10,9 +10,7 @@ const mapDispatchToProps = dispatch => ({
   getStocksData: () => dispatch(getStocksDataApi()),
 })
 
-const StockBoardContainer = connect(
+export default connect(
   null,
   mapDispatchToProps
 )(StockBoard)
-
-export default StockBoardContainer
