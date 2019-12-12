@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import { changeStock } from '../actions/selectedStock'
+import { searchStocksByIdOrDate } from '../actions/stocksData';
 import DropdownSelect from '../components/stockBoard/dropdownSelect'
 
 const mapStateToProps = state => ({
@@ -7,7 +8,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onChange: e => dispatch(changeStock(e))
+  onChange: e => {
+    dispatch(changeStock(e))
+    dispatch(searchStocksByIdOrDate())
+  }
 })
 
 export default connect(

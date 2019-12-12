@@ -23,8 +23,12 @@ export function getStocksData() {
   }
 }
 
-export function searchStocksByIdOrDate(stockId, date) {
-  return (dispatch) => {
+export function searchStocksByIdOrDate() {
+  return (dispatch, getState) => {
+    const { selectedDate, selectedStock } = getState()
+    const stockId = selectedStock === 'all' ? '' : selectedStock
+    const date = selectedDate === 'all' ? '' : selectedDate
+     
     getStockByIdOrDate(stockId, date)
       .then(res => {
         dispatch({
