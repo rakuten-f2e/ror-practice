@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
 import { createStore, applyMiddleware, compose } from 'redux'
-import { searchStocksByIdOrDateApi } from '../actions/stocksData';
+import { searchStocksByIdOrDate } from '../actions/stocksData';
 
 const store = createStore(
   rootReducer, 
@@ -23,7 +23,7 @@ store.subscribe(()=>{
     selectedStock = nextSelectedStock
     selectedDate = nextSelectedDate
   
-    store.dispatch(searchStocksByIdOrDateApi(stockId, date))
+    store.dispatch(searchStocksByIdOrDate(stockId, date))
   }
   
 })
