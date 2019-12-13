@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
 	def index
 		# Stock.crawl_stocks
-		if params[:id].to_s.length != 0 || params[:date].to_s.length != 0
+		if params[:id].present? || params[:date].present?
 			stocks = Stock.search_stocks(params[:id], params[:date])
 		else
 			stocks = Stock.get_today_stocks

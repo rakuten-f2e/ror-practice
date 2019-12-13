@@ -50,9 +50,9 @@ class Stock < ActiveRecord::Base
   end
 
   def self.search_stocks(sid, date)
-    if sid.length === 0
+    if sid.blank?
       Stock.where(created_at: date.to_date.midnight..date.to_date.end_of_day)
-    elsif date.length === 0
+    elsif date.blank?
       Stock.where(stock_id: sid)
     else
       Stock.where(stock_id: sid, created_at: date.to_date.midnight..date.to_date.end_of_day)
