@@ -1,10 +1,9 @@
 const selectedStock = (state = '', action) => {
   switch (action.type) {
-    case 'CHANGE_STOCK': {
+    case 'CHANGE_STOCK':
       return action.selectedStock
-    }
     default:
-      return state;
+      return state
   }
 }
 

@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onClick: i => dispatch(sortStocksData(i))
+  handleClick: i => dispatch(sortStocksData(i))
 })
 
 export default connect(

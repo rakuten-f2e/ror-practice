@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  onChange: e => {
+  handleChange: e => {
     dispatch(changeStock(e))
     dispatch(searchStocksByIdOrDate())
   }

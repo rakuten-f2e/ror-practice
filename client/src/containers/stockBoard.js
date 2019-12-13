@@ -1,13 +1,12 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { getDateOption } from '../actions/dateOption'
 import { getStockOption } from '../actions/stockOption'
 import { getStocksData } from '../actions/stocksData'
 import StockBoard from '../components/stockBoard'
 
 const mapDispatchToProps = dispatch => ({
-  getDateOption: () => dispatch(getDateOption()),
-  getStockOption: () => dispatch(getStockOption()),
-  getStocksData: () => dispatch(getStocksData()),
+  ...bindActionCreators({ getDateOption, getStockOption, getStocksData }, dispatch)
 })
 
 export default connect(

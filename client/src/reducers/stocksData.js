@@ -15,9 +15,8 @@ const HEADING = [
 
 const stocksData = (state = [], action) => {
   switch (action.type) {
-    case 'GET_STOCK_DATA': {
-      return action.data  
-    }
+    case 'GET_STOCK_DATA':
+      return action.data
     case 'SORT_STOCK_DATA': {
       const stocksData = [...state]
       const condition = HEADING[action.clickedIndex]
@@ -26,11 +25,10 @@ const stocksData = (state = [], action) => {
         return a[condition] <=  b[condition] ? 1 : -1
       })  
     }
-    case 'GET_SEARCH_STOCK_DATA': {
+    case 'GET_SEARCH_STOCK_DATA':
       return action.data
-    }
     default:
-      return state;
+      return state
   }
 }
 

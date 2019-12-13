@@ -1,10 +1,9 @@
 const selectedDate = (state = '', action) => {
   switch (action.type) {
-    case 'CHANGE_DATE': {
+    case 'CHANGE_DATE':
       return action.selectedDate
-    }
     default:
-      return state;
+      return state
   }
 }
 
